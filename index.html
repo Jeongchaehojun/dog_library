@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐾 신차냥ㅎ — 188종 견종 도감</title>
+  <meta name="description" content="188종 강아지 견종을 한눈에! 크기, 성격, 운동량, 재미있는 사실까지. 어린이부터 어른까지 모두를 위한 강아지 백과사전.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=12">
+</head>
+
+<body class="encyclopedia-active">
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="logo" id="logoHome" style="cursor:pointer;">
+        <span class="logo-icon">🐾</span>
+        <h1 class="logo-text">강아지 백과사전</h1>
+        <span class="logo-badge">188종</span>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="hero" id="hero">
+        <div class="hero-inner">
+          <div class="search-container">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="searchInput" class="search-input" placeholder="견종 이름을 검색하세요 (한국어 또는 영어)"
+                autocomplete="off">
+              <button class="search-clear" id="searchClear" aria-label="검색어 지우기">✕</button>
+            </div>
+            <div class="search-count" id="searchCount"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="header-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="언어 전환">
+          <span class="lang-label">EN</span>
+        </button>
+        <button class="theme-toggle" id="themeToggle" aria-label="다크 모드 전환">
+          <span class="theme-icon light-icon">🌙</span>
+          <span class="theme-icon dark-icon">☀️</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+      <div class="nav-inner">
+        <button class="nav-item active" data-page="encyclopedia">
+          <span class="nav-icon">📖</span>
+          <span class="nav-text" data-i18n="navEncyclopedia">견종백과</span>
+        </button>
+        <button class="nav-item" data-page="mydog">
+          <span class="nav-icon">🐶</span>
+          <span class="nav-text" data-i18n="navMyDog">우리 강아지</span>
+        </button>
+        <!-- 케어 가이드 dropdown -->
+        <div class="nav-group" id="navGroupGuide">
+          <button class="nav-item nav-group-trigger" id="navGuideBtn" aria-haspopup="true" aria-expanded="false">
+            <span class="nav-icon">📋</span>
+            <span class="nav-text" data-i18n="navGuide">케어 가이드</span>
+            <span class="nav-chevron">▾</span>
+          </button>
+          <div class="nav-dropdown" id="navGuideDropdown" role="menu">
+            <button class="nav-dropdown-item" data-page="care" role="menuitem">
+              <span class="nav-dropdown-icon">🏠</span>
+              <div class="nav-dropdown-text">
+                <span class="nav-dropdown-title" data-i18n="navCare">키울 때 주의사항</span>
+                <span class="nav-dropdown-desc" data-i18n="navCareDesc">일상 케어 필수 가이드</span>
+              </div>
+            </button>
+            <button class="nav-dropdown-item" data-page="vet" role="menuitem">
+              <span class="nav-dropdown-icon">🏥</span>
+              <div class="nav-dropdown-text">
+                <span class="nav-dropdown-title" data-i18n="navVet">병원 체크리스트</span>
+                <span class="nav-dropdown-desc" data-i18n="navVetDesc">내원 전 확인 포인트</span>
+              </div>
+            </button>
+            <button class="nav-dropdown-item" data-page="food" role="menuitem">
+              <span class="nav-dropdown-icon">🍽️</span>
+              <div class="nav-dropdown-text">
+                <span class="nav-dropdown-title" data-i18n="navFood">음식 가이드</span>
+                <span class="nav-dropdown-desc" data-i18n="navFoodDesc">먹어도 되는 것 vs 위험 식품</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <button class="nav-item" data-page="mbti">
+          <span class="nav-icon">🧬</span>
+          <span class="nav-text" data-i18n="navMbti">멍BTI</span>
+        </button>
+        <button class="nav-item" data-page="quiz">
+          <span class="nav-icon">🧩</span>
+          <span class="nav-text" data-i18n="navQuiz">나에게 맞는 견종</span>
+        </button>
+        <button class="nav-item" data-page="celebrity">
+          <span class="nav-icon">⭐</span>
+          <span class="nav-text" data-i18n="navCeleb">유명인의 강아지</span>
+        </button>
+        <button class="nav-item" data-page="about">
+          <span class="nav-icon">👨‍💻</span>
+          <span class="nav-text" data-i18n="navAbout">만든 사람</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== PAGE: Encyclopedia ==================== -->
+  <div class="page-section active" id="page-encyclopedia">
+
+
+
+    <!-- Trending Section -->
+    <section class="trending-section" id="trendingSection">
+      <div class="trending-inner">
+        <div class="trending-header">
+          <div class="trending-title-wrap">
+            <span class="trending-live"><span class="live-dot"></span>LIVE</span>
+            <h2 class="trending-title">🔥 실시간 인기 견종</h2>
+          </div>
+          <div class="trending-meta">
+            <span class="trending-viewers"><span class="viewers-icon">👀</span> <span id="totalViewers">0</span>명이 지금 보고
+              있어요</span>
+          </div>
+        </div>
+        <div class="trending-track" id="trendingTrack">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-section" id="filterSection">
+      <div class="filter-inner">
+        <div class="filter-group">
+          <div class="filter-group-header">
+            <label class="filter-label">그룹</label>
+            <span class="total-count-badge" id="totalCountBadge">총 188종</span>
+          </div>
+          <div class="filter-chips" id="groupFilter">
+            <button class="chip active" data-value="all">
+              <span class="chip-main">전체</span>
+              <span class="chip-desc">등록된 모든 견종을 모아봅니다.</span>
+            </button>
+            <button class="chip" data-value="sporting">
+              <span class="chip-main">🏃 스포팅</span>
+              <span class="chip-desc">사냥을 돕는 영리하고 활기찬 조렵견 그룹 (리트리버, 코커스패니얼 등)</span>
+            </button>
+            <button class="chip" data-value="hound">
+              <span class="chip-main">🐕 하운드</span>
+              <span class="chip-desc">시각이나 후각으로 사냥감을 쫓는 끈기 있고 날렵한 수렵견 그룹 (비글, 닥스훈트 등)</span>
+            </button>
+            <button class="chip" data-value="working">
+              <span class="chip-main">💪 워킹</span>
+              <span class="chip-desc">경비, 구조, 썰매 끌기 등 사람의 일을 돕는 든든하고 힘센 작업견 그룹 (허스키, 도베르만 등)</span>
+            </button>
+            <button class="chip" data-value="terrier">
+              <span class="chip-main">⚡ 테리어</span>
+              <span class="chip-desc">땅속 작은 동물을 잡는 용맹하고 활발한 소형 사냥견 그룹 (요크셔테리어, 슈나우저 등)</span>
+            </button>
+            <button class="chip" data-value="toy">
+              <span class="chip-main">🧸 토이</span>
+              <span class="chip-desc">사람과 반려 목적으로 개량된 작고 사랑스러운 애완견 그룹 (말티즈, 푸들, 포메라니안 등)</span>
+            </button>
+            <button class="chip" data-value="herding">
+              <span class="chip-main">🐑 허딩</span>
+              <span class="chip-desc">가축을 몰고 지키는 지능적이고 훈련이 잘 되는 목양견 그룹 (콜리, 웰시코기 등)</span>
+            </button>
+            <button class="chip" data-value="non-sporting">
+              <span class="chip-main">🌟 논스포팅</span>
+              <span class="chip-desc">사냥이나 작업 외 다양한 목적의 개성 넘치는 반려견 그룹 (불독, 비숑프리제, 시바 등)</span>
+            </button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-group-header">
+            <label class="filter-label">크기</label>
+          </div>
+          <div class="filter-chips" id="sizeFilter">
+            <button class="chip active" data-value="all">전체</button>
+            <button class="chip" data-value="small">🐕 소형</button>
+            <button class="chip" data-value="medium">🐕‍🦺 중형</button>
+            <button class="chip" data-value="large">🦮 대형</button>
+            <button class="chip" data-value="giant">🐘 초대형</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-group-header">
+            <label class="filter-label">정렬</label>
+          </div>
+          <select class="sort-select" id="sortSelect">
+            <option value="nameKo">이름순 (한국어)</option>
+            <option value="nameEn">이름순 (영어)</option>
+            <option value="size">크기순</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card Grid -->
+    <main class="main-content">
+      <div class="card-grid" id="cardGrid"></div>
+      <div class="no-results" id="noResults" style="display:none;">
+        <span class="no-results-emoji">🐶</span>
+        <p class="no-results-text">검색 결과가 없습니다</p>
+        <p class="no-results-sub">다른 검색어를 시도해보세요!</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- ==================== PAGE: My Dog ==================== -->
+  <div class="page-section" id="page-mydog">
+    <div class="content-page">
+      <div class="content-hero mydog-hero">
+        <span class="content-hero-emoji">🐶</span>
+        <h2 class="content-hero-title" data-i18n="mydogTitle">우리 강아지 건강 백과</h2>
+        <p class="content-hero-sub" data-i18n="mydogSub">키우시는 강아지의 품종을 입력하고 맞춤 건강 및 행동 조언을 받으세요</p>
+      </div>
+
+      <!-- 1. My Dog Registration / Selection View -->
+      <div id="mydog-registration-view" class="mydog-view active">
+        <div class="mydog-reg-card">
+          <div class="mydog-reg-icon">🐕</div>
+          <h3 class="mydog-reg-title" data-i18n="mydogTitle">우리 강아지 등록하기</h3>
+          
+          <div class="mydog-search-container">
+            <div class="mydog-search-box">
+              <span class="mydog-search-icon">🔍</span>
+              <input type="text" id="mydogSearchInput" class="mydog-search-input" placeholder="강아지 종을 입력하세요 (예: 포메라니안, 말티즈...)" autocomplete="off">
+              <button class="mydog-search-clear" id="mydogSearchClear" aria-label="검색어 지우기">✕</button>
+            </div>
+            <!-- Autocomplete suggestions dropdown -->
+            <div id="mydogAutocompleteList" class="mydog-autocomplete-list"></div>
+          </div>
+
+          <!-- Quick Select Chips -->
+          <div class="mydog-quick-chips">
+            <h4 class="mydog-quick-title" data-i18n="mydogQuickRegister">⚡ 자주 키우는 강아지 종 빠른 등록</h4>
+            <div class="mydog-chips-container" id="mydogQuickChips">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. My Dog Dashboard View (Displays when breed is registered) -->
+      <div id="mydog-dashboard-view" class="mydog-view">
+        <div class="mydog-dashboard-grid" id="mydogDashboardContent">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE: Care Tips ==================== -->
+  <div class="page-section" id="page-care">
+    <div class="content-page">
+      <div class="content-hero care-hero">
+        <span class="content-hero-emoji">🏠</span>
+        <h2 class="content-hero-title" data-i18n="careTitle">반려견 키울 때 주의사항</h2>
+        <p class="content-hero-sub" data-i18n="careSub">행복한 반려 생활을 위한 필수 가이드</p>
+      </div>
+      <div class="content-body">
+
+        <div class="info-card-grid">
+          <div class="info-card">
+            <div class="info-card-icon">🍖</div>
+            <h3 class="info-card-title">식사 관리</h3>
+            <ul class="info-card-list">
+              <li>견종과 크기에 맞는 사료를 선택하세요</li>
+              <li>사람 음식 중 <strong>초콜릿, 포도, 양파, 마늘, 자일리톨</strong>은 치명적입니다</li>
+              <li>정해진 시간에 정량을 급여하세요</li>
+              <li>깨끗한 물을 항상 제공하세요</li>
+              <li>급격한 사료 변경은 피하고 7~10일에 걸쳐 서서히 바꿔주세요</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-icon">🏃‍♂️</div>
+            <h3 class="info-card-title">운동과 산책</h3>
+            <ul class="info-card-list">
+              <li>하루 최소 30분~1시간 산책이 필요합니다</li>
+              <li>대형견은 더 많은 운동량이 필요합니다</li>
+              <li>너무 더운 날(35°C 이상)에는 아스팔트가 뜨거우니 주의하세요</li>
+              <li>목줄과 하네스를 꼭 착용하세요</li>
+              <li>산책 후 발바닥을 깨끗이 닦아주세요</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-icon">🛁</div>
+            <h3 class="info-card-title">위생 관리</h3>
+            <ul class="info-card-list">
+              <li>2~4주에 한 번 목욕시켜 주세요 (너무 자주는 피부에 해롭습니다)</li>
+              <li>귀 청소는 주 1회 정도가 적당합니다</li>
+              <li>양치는 매일 하는 것이 가장 좋습니다</li>
+              <li>발톱은 2~3주마다 잘라주세요 (혈관 주의!)</li>
+              <li>눈곱은 매일 부드럽게 닦아주세요</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-icon">💉</div>
+            <h3 class="info-card-title">예방 접종</h3>
+            <ul class="info-card-list">
+              <li><strong>종합 백신(DHPPL)</strong>: 생후 6~8주부터 2~4주 간격으로 3~5회</li>
+              <li><strong>광견병 백신</strong>: 생후 3개월 이후 (법적 의무)</li>
+              <li><strong>켄넬 코프</strong>: 다견 환경이라면 필수</li>
+              <li>매년 추가 접종(부스터)을 잊지 마세요</li>
+              <li>심장사상충 예방약은 월 1회 투여하세요</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-icon">🧠</div>
+            <h3 class="info-card-title">사회화와 훈련</h3>
+            <ul class="info-card-list">
+              <li>생후 3~14주가 사회화의 황금기입니다</li>
+              <li>다양한 사람, 동물, 환경에 노출시켜 주세요</li>
+              <li>긍정 강화(칭찬과 간식)로 훈련하세요</li>
+              <li>기본 명령어(앉아, 기다려, 이리와)부터 시작하세요</li>
+              <li>체벌은 절대 효과적이지 않습니다</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-icon">⚠️</div>
+            <h3 class="info-card-title">위험 상황 대처</h3>
+            <ul class="info-card-list">
+              <li>독극물 섭취 시 즉시 동물병원으로 가세요</li>
+              <li>열사병 증상: 헐떡임, 침 흘림, 비틀거림 → 즉시 체온을 낮추세요</li>
+              <li>골절/외상 시 움직임을 최소화하고 병원으로 이동하세요</li>
+              <li>경련 시 주변 물건을 치우고 조용히 지켜보세요</li>
+              <li>반려견 응급 키트를 항상 준비해두세요</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE: Vet Checklist ==================== -->
+  <div class="page-section" id="page-vet">
+    <div class="content-page">
+      <div class="content-hero vet-hero">
+        <span class="content-hero-emoji">🏥</span>
+        <h2 class="content-hero-title" data-i18n="vetTitle">병원 체크리스트</h2>
+        <p class="content-hero-sub" data-i18n="vetSub">반려견의 건강을 지키는 정기 검진 가이드</p>
+      </div>
+      <div class="content-body">
+
+        <div class="checklist-section">
+          <h3 class="checklist-title">🐶 강아지 (생후 ~ 1년)</h3>
+          <div class="checklist-grid">
+            <div class="check-item"><span class="check-emoji">✅</span>
+              <div><strong>종합 백신 접종</strong>
+                <p>DHPPL 5차까지 완료</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">✅</span>
+              <div><strong>광견병 접종</strong>
+                <p>생후 3개월 이후</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">✅</span>
+              <div><strong>분변 검사</strong>
+                <p>기생충 감염 여부 확인</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">✅</span>
+              <div><strong>중성화 상담</strong>
+                <p>적절한 시기 상의</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">✅</span>
+              <div><strong>마이크로칩 등록</strong>
+                <p>내장형 동물 등록</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">✅</span>
+              <div><strong>심장사상충 검사</strong>
+                <p>예방약 투여 시작</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="checklist-section">
+          <h3 class="checklist-title">🐕 성견 (1~7세)</h3>
+          <div class="checklist-grid">
+            <div class="check-item"><span class="check-emoji">📋</span>
+              <div><strong>연 1회 종합 건강검진</strong>
+                <p>혈액검사, 소변검사, 신체검사</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">📋</span>
+              <div><strong>추가 접종 (부스터)</strong>
+                <p>매년 종합 백신 + 광견병</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">📋</span>
+              <div><strong>치과 검진</strong>
+                <p>스케일링 필요 여부 확인</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">📋</span>
+              <div><strong>체중 관리</strong>
+                <p>비만도 체크 (BCS 평가)</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">📋</span>
+              <div><strong>심장사상충 검사</strong>
+                <p>연 1회 + 월 예방약</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">📋</span>
+              <div><strong>피부/귀 점검</strong>
+                <p>알레르기, 외이염 확인</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="checklist-section">
+          <h3 class="checklist-title">🦮 노견 (7세 이상)</h3>
+          <div class="checklist-grid">
+            <div class="check-item"><span class="check-emoji">🔍</span>
+              <div><strong>연 2회 종합 검진</strong>
+                <p>6개월마다 혈액 + 소변 + X-ray</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">🔍</span>
+              <div><strong>심장 초음파</strong>
+                <p>심장 질환 조기 발견</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">🔍</span>
+              <div><strong>관절/근육 검사</strong>
+                <p>관절염, 근감소증 확인</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">🔍</span>
+              <div><strong>안과 검진</strong>
+                <p>백내장, 녹내장 확인</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">🔍</span>
+              <div><strong>종양 검사</strong>
+                <p>피부 혹, 내부 종양 스크리닝</p>
+              </div>
+            </div>
+            <div class="check-item"><span class="check-emoji">🔍</span>
+              <div><strong>갑상선/신장 검사</strong>
+                <p>호르몬 이상, 신부전 체크</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vet-tip-box">
+          <div class="vet-tip-icon">💡</div>
+          <div class="vet-tip-content">
+            <h4>병원 방문 시 준비물</h4>
+            <p>• 예방 접종 수첩 &nbsp; • 평소 먹는 사료/약 목록 &nbsp; • 증상 기록 메모 &nbsp; • 분변 샘플 (첫 방문 시) &nbsp; • 이전 검사 결과지</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE: About ==================== -->
+  <div class="page-section" id="page-about">
+    <div class="content-page">
+      <div class="content-hero about-hero">
+        <span class="content-hero-emoji">👨‍💻</span>
+        <h2 class="content-hero-title" data-i18n="aboutTitle">이 백과를 만든 사람</h2>
+        <p class="content-hero-sub" data-i18n="aboutSub">강아지를 사랑하는 개발자의 이야기</p>
+      </div>
+      <div class="content-body">
+        <div class="about-card">
+          <div class="about-avatar">🐕‍🦺</div>
+          <div class="about-info">
+            <h3 class="about-name">강아지 백과사전 팀</h3>
+            <p class="about-role">기획 · 데이터 수집 · 개발</p>
+            <p class="about-bio">
+              세상에는 정말 다양하고 아름다운 견종들이 있습니다.
+              이 백과사전은 견종에 관심을 가진 어린이부터 어른까지
+              모두가 쉽고 재미있게 강아지에 대해 알아갈 수 있도록 만들었습니다.
+            </p>
+            <div class="about-stats">
+              <div class="about-stat-item">
+                <span class="about-stat-number">188</span>
+                <span class="about-stat-label">수록 견종</span>
+              </div>
+              <div class="about-stat-item">
+                <span class="about-stat-number">7</span>
+                <span class="about-stat-label">견종 그룹</span>
+              </div>
+              <div class="about-stat-item">
+                <span class="about-stat-number">940+</span>
+                <span class="about-stat-label">재미있는 사실</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <h3>📌 프로젝트 소개</h3>
+          <p>이 웹사이트는 Dog CEO API를 활용하여 실시간 견종 이미지를 제공하며, 순수 HTML/CSS/JavaScript로 개발되었습니다. 프레임워크 없이 바닐라 JS만으로 검색, 필터링,
+            다크모드, 다국어 지원 등을 구현했습니다.</p>
+        </div>
+
+        <div class="about-section">
+          <h3>🛠 사용 기술</h3>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">Vanilla JavaScript</span>
+            <span class="tech-tag">Dog CEO API</span>
+            <span class="tech-tag">Google Fonts</span>
+            <span class="tech-tag">Intersection Observer</span>
+            <span class="tech-tag">LocalStorage</span>
+            <span class="tech-tag">Responsive Design</span>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <h3>💌 감사의 말</h3>
+          <p>견종 이미지를 무료로 제공해주는 <a href="https://dog.ceo" target="_blank" rel="noopener">Dog CEO API</a>에 감사드립니다. 이 프로젝트가
+            여러분의 반려견 생활에 조금이나마 도움이 되길 바랍니다. 🐾</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE: Food Guide ==================== -->
+  <div class="page-section" id="page-food">
+    <div class="content-page">
+      <div class="content-hero food-hero">
+        <span class="content-hero-emoji">🍽</span>
+        <h2 class="content-hero-title">반려견 음식 가이드</h2>
+        <p class="content-hero-sub">안전한 음식과 절대 금지 음식을 한눈에 확인하세요</p>
+      </div>
+      <div class="content-body">
+
+        <div class="food-section">
+          <h3 class="food-section-title danger-title">🚫 절대 먹이면 안 되는 음식 (치명적)</h3>
+          <div class="food-grid">
+            <div class="food-item danger"><span class="food-emoji">🍫</span>
+              <div><strong>초콜릿</strong>
+                <p>테오브로민 성분이 심장·신경계 마비를 유발</p>
+              </div><span class="food-level">☠️</span>
+            </div>
+            <div class="food-item danger"><span class="food-emoji">🍇</span>
+              <div><strong>포도 / 건포도</strong>
+                <p>소량으로도 급성 신부전 유발 가능</p>
+              </div><span class="food-level">☠️</span>
+            </div>
+            <div class="food-item danger"><span class="food-emoji">🧅</span>
+              <div><strong>양파 / 마늘 / 부추</strong>
+                <p>적혈구 파괴 → 용혈성 빈혈 유발</p>
+              </div><span class="food-level">☠️</span>
+            </div>
+            <div class="food-item danger"><span class="food-emoji">🍬</span>
+              <div><strong>자일리톨 (무설탕 껌)</strong>
+                <p>혈당 급감 → 간 손상, 소량도 치명적</p>
+              </div><span class="food-level">☠️</span>
+            </div>
+            <div class="food-item danger"><span class="food-emoji">🥑</span>
+              <div><strong>아보카도</strong>
+                <p>페르신 성분이 구토, 설사, 심장 손상 유발</p>
+              </div><span class="food-level">☠️</span>
+            </div>
+            <div class="food-item danger"><span class="food-emoji">🫘</span>
+              <div><strong>마카다미아 넛</strong>
+                <p>근육 떨림, 구토, 고열 유발</p>
+              </div><span class="food-level">☠️</span>
+            </div>
+            <div class="food-item danger"><span class="food-emoji">☕</span>
+              <div><strong>카페인 (커피, 차)</strong>
+                <p>심박수 증가, 경련, 사망 가능</p>
+              </div><span class="food-level">☠️</span>
+            </div>
+            <div class="food-item danger"><span class="food-emoji">🍺</span>
+              <div><strong>알코올</strong>
+                <p>구토, 설사, 호흡 곤란, 혼수상태</p>
+              </div><span class="food-level">☠️</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-section">
+          <h3 class="food-section-title caution-title">⚠️ 주의가 필요한 음식</h3>
+          <div class="food-grid">
+            <div class="food-item caution"><span class="food-emoji">🥛</span>
+              <div><strong>우유 / 유제품</strong>
+                <p>유당불내증이 흔함, 소량만 급여</p>
+              </div><span class="food-level">⚠️</span>
+            </div>
+            <div class="food-item caution"><span class="food-emoji">🦴</span>
+              <div><strong>익힌 뼈</strong>
+                <p>부러지며 소화관 찢을 위험</p>
+              </div><span class="food-level">⚠️</span>
+            </div>
+            <div class="food-item caution"><span class="food-emoji">🧂</span>
+              <div><strong>짠 음식</strong>
+                <p>나트륨 과다 → 탈수, 신장 문제</p>
+              </div><span class="food-level">⚠️</span>
+            </div>
+            <div class="food-item caution"><span class="food-emoji">🍖</span>
+              <div><strong>지방이 많은 음식</strong>
+                <p>췌장염 유발 위험</p>
+              </div><span class="food-level">⚠️</span>
+            </div>
+            <div class="food-item caution"><span class="food-emoji">🌽</span>
+              <div><strong>옥수수 (통째)</strong>
+                <p>옥수수 자체는 OK, 심(속대)은 장폐색 위험</p>
+              </div><span class="food-level">⚠️</span>
+            </div>
+            <div class="food-item caution"><span class="food-emoji">🥚</span>
+              <div><strong>날달걀</strong>
+                <p>살모넬라 감염 위험, 익혀서 급여</p>
+              </div><span class="food-level">⚠️</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-section">
+          <h3 class="food-section-title safe-title">✅ 안전한 음식 (적당량)</h3>
+          <div class="food-grid">
+            <div class="food-item safe"><span class="food-emoji">🥕</span>
+              <div><strong>당근</strong>
+                <p>비타민A 풍부, 치아 건강에 좋음</p>
+              </div><span class="food-level">👍</span>
+            </div>
+            <div class="food-item safe"><span class="food-emoji">🫐</span>
+              <div><strong>블루베리</strong>
+                <p>항산화 물질 풍부, 훈련 간식으로 최적</p>
+              </div><span class="food-level">👍</span>
+            </div>
+            <div class="food-item safe"><span class="food-emoji">🍌</span>
+              <div><strong>바나나</strong>
+                <p>칼륨, 비타민 풍부 (설탕이 많아 소량만)</p>
+              </div><span class="food-level">👍</span>
+            </div>
+            <div class="food-item safe"><span class="food-emoji">🍎</span>
+              <div><strong>사과 (씨 제거)</strong>
+                <p>비타민C 풍부, 씨에는 시안화물 주의</p>
+              </div><span class="food-level">👍</span>
+            </div>
+            <div class="food-item safe"><span class="food-emoji">🍠</span>
+              <div><strong>고구마 (익힌 것)</strong>
+                <p>식이섬유 풍부, 소화에 좋음</p>
+              </div><span class="food-level">👍</span>
+            </div>
+            <div class="food-item safe"><span class="food-emoji">🥦</span>
+              <div><strong>브로콜리</strong>
+                <p>비타민K, C 풍부 (전체 식사의 10% 이내)</p>
+              </div><span class="food-level">👍</span>
+            </div>
+            <div class="food-item safe"><span class="food-emoji">🍗</span>
+              <div><strong>익힌 닭가슴살</strong>
+                <p>고단백 저지방, 최고의 간식</p>
+              </div><span class="food-level">👍</span>
+            </div>
+            <div class="food-item safe"><span class="food-emoji">🎃</span>
+              <div><strong>호박</strong>
+                <p>식이섬유 풍부, 소화 문제 시 도움</p>
+              </div><span class="food-level">👍</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vet-tip-box">
+          <div class="vet-tip-icon">🚨</div>
+          <div class="vet-tip-content">
+            <h4>응급 상황 시</h4>
+            <p>반려견이 위험한 음식을 먹었다면, <strong>즉시 동물병원에 연락</strong>하세요. 무리하게 구토를 유도하지 마세요. 섭취한 음식의 종류와 양, 시간을 정확히 기록해 수의사에게
+              알려주세요.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE: Quiz ==================== -->
+  <div class="page-section" id="page-quiz">
+    <div class="content-page">
+      <div class="content-hero quiz-hero">
+        <span class="content-hero-emoji">🧩</span>
+        <h2 class="content-hero-title">나에게 맞는 견종 찾기</h2>
+        <p class="content-hero-sub">당신의 성격과 라이프스타일에 딱 맞는 반려견을 찾아보세요! 🐶</p>
+      </div>
+      <div class="content-body">
+        <div class="quiz-container" id="quizContainer">
+          <!-- Quiz steps rendered by JS -->
+        </div>
+        <div class="quiz-result" id="quizResult" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE: Celebrity Dogs ==================== -->
+  <div class="page-section" id="page-celebrity">
+    <div class="content-page celeb-page">
+      <div class="content-hero celeb-hero">
+        <span class="content-hero-emoji">⭐</span>
+        <h2 class="content-hero-title">유명인의 반려견</h2>
+        <p class="content-hero-sub">스타들이 사랑하는 강아지를 만나보세요 🌟</p>
+      </div>
+      <div class="content-body">
+
+        <div class="celeb-category">
+          <h3 class="celeb-category-title">🇰🇷 한국 스타</h3>
+          <div class="celeb-grid">
+
+            <div class="celeb-card" data-breed="maltese">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🎤</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">아이유 (IU)</div>
+                  <div class="celeb-title">가수 · 배우</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 말티즈</span>
+                <span class="celeb-dog-name">"봉식이"</span>
+              </div>
+              <p class="celeb-dog-story">아이유의 오랜 반려견 봉식이는 팔로워 100만 명이 넘는 SNS 스타로, 뮤직비디오에도 자주 등장합니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="pomeranian">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🎤</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">BTS 뷔 (V)</div>
+                  <div class="celeb-title">BTS · 배우</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 포메라니안</span>
+                <span class="celeb-dog-name">"연탄이"</span>
+              </div>
+              <p class="celeb-dog-story">연탄이는 BTS 뷔가 가장 사랑하는 반려견으로, ARMY들 사이에서도 세계적 인기를 누리고 있습니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="doberman-pinscher">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🎤</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">정국 (Jungkook)</div>
+                  <div class="celeb-title">BTS</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 도베르만 핀셔</span>
+                <span class="celeb-dog-name">"밤이"</span>
+              </div>
+              <p class="celeb-dog-story">밤이는 정국이 입양한 도베르만 핀셔로, 방송에 자주 등장해 팬들의 사랑을 받았습니다.</p>
+            </div>
+
+            <div class="celeb-card">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🎤</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">이효리</div>
+                  <div class="celeb-title">가수 · 활동가</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 유기견 입양</span>
+                <span class="celeb-dog-name">"순심이" 외 다수</span>
+              </div>
+              <p class="celeb-dog-story">동물 보호 활동가로서 유기견을 여러 마리 입양했으며, 반려동물 보호 인식 개선에 크게 기여했습니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="bichon-frise">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">⚽</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">손흥민</div>
+                  <div class="celeb-title">축구 선수</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 비숑 프리제</span>
+                <span class="celeb-dog-name">"백구"</span>
+              </div>
+              <p class="celeb-dog-story">손흥민 선수의 사랑스러운 비숑 프리제 백구는 비시즌에도 SNS를 통해 팬들과 소통했습니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="poodle">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🎤</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">지코 (ZICO)</div>
+                  <div class="celeb-title">래퍼 · 프로듀서</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 토이 푸들</span>
+                <span class="celeb-dog-name">"투티"</span>
+              </div>
+              <p class="celeb-dog-story">지코의 토이 푸들 투티는 예능 프로그램에도 등장하며 귀여운 매력을 뽐냈습니다.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="celeb-category">
+          <h3 class="celeb-category-title">🇺🇸 해외 스타</h3>
+          <div class="celeb-grid">
+
+            <div class="celeb-card" data-breed="french-bulldog">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🎤</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">레이디 가가</div>
+                  <div class="celeb-title">가수 · 배우</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 프렌치 불독</span>
+                <span class="celeb-dog-name">"Koji" "Gustav"</span>
+              </div>
+              <p class="celeb-dog-story">2021년 산책 도우미가 피습당하고 강아지들이 납치되는 사건이 있었으며, 50만 달러 현상금을 걸어 되찾았습니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="chihuahua">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">👑</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">파리스 힐턴</div>
+                  <div class="celeb-title">사업가 · 미디어 인물</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 치와와</span>
+                <span class="celeb-dog-name">"Tinkerbell"</span>
+              </div>
+              <p class="celeb-dog-story">2000년대 핸드백에 넣어 다니는 모습이 전 세계적 트렌드가 되며 치와와 붐을 일으켰습니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="labrador">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🎥</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">제니퍼 애니스턴</div>
+                  <div class="celeb-title">배우</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 래브라도 리트리버</span>
+                <span class="celeb-dog-name">"Lord Chesterfield"</span>
+              </div>
+              <p class="celeb-dog-story">애니스턴은 여러 마리의 유기견을 입양하며, 동물 복지 기관에 적극적으로 기부하고 있습니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="german-shepherd">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🇺🇸</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">조 바이든</div>
+                  <div class="celeb-title">미국 46대 대통령</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 저먼 셰퍼드</span>
+                <span class="celeb-dog-name">"Commander"</span>
+              </div>
+              <p class="celeb-dog-story">백악관에서 생활한 저먼 셰퍼드로, 대통령의 반려견으로 세계적 주목을 받았습니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="puli">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">💻</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">마크 저커버그</div>
+                  <div class="celeb-title">Meta CEO</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 풀리</span>
+                <span class="celeb-dog-name">"Beast"</span>
+              </div>
+              <p class="celeb-dog-story">풀리 견종의 Beast는 자체 페이스북 페이지를 가지고 있으며 팔로워가 200만 명이 넘습니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="cocker-spaniel">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">📺</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">오프라 윈프리</div>
+                  <div class="celeb-title">방송인 · 사업가</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 코커 스패니얼</span>
+                <span class="celeb-dog-name">"Sadie"</span>
+              </div>
+              <p class="celeb-dog-story">오프라는 여러 마리의 반려견을 키우며, 자신의 토크쇼에서 동물과의 유대감을 자주 이야기합니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="beagle">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🎬</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">아리아나 그란데</div>
+                  <div class="celeb-title">가수 · 배우</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 비글</span>
+                <span class="celeb-dog-name">"Toulouse"</span>
+              </div>
+              <p class="celeb-dog-story">아리아나는 10마리 이상의 반려견을 키우는 애견인으로, 유기견 입양에도 적극적입니다.</p>
+            </div>
+
+            <div class="celeb-card" data-breed="golden-retriever">
+              <div class="celeb-card-top">
+                <div class="celeb-avatar">🏀</div>
+                <div class="celeb-info">
+                  <div class="celeb-name">르브론 제임스</div>
+                  <div class="celeb-title">농구 선수</div>
+                </div>
+              </div>
+              <div class="celeb-dog-info">
+                <span class="celeb-dog-breed">🐕 골든 리트리버</span>
+                <span class="celeb-dog-name">"Goldmember"</span>
+              </div>
+              <p class="celeb-dog-story">르브론은 가족을 위한 대형견을 선호하며, 아이들과 함께 노는 모습을 자주 공유합니다.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="celeb-fun-fact">
+          <div class="vet-tip-icon">💡</div>
+          <div class="vet-tip-content">
+            <h4>알고 계셨나요?</h4>
+            <p>엘리자베스 2세 여왕은 평생 동안 30마리 이상의 웨시 코기를 키웠고, 엘비스 프레슬리는 끝없이 새로운 반려견을 입양하는 것으로 유명했습니다. 역사 속 수많은 위인들도 강아지를
+              사랑했답니다! 👑</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalClose" aria-label="닫기">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <!-- ==================== PAGE: 멍BTI ==================== -->
+  <div class="page-section" id="page-mbti">
+    <div class="content-page">
+      <div class="content-hero mbti-hero">
+        <span class="content-hero-emoji">🧬</span>
+        <h2 class="content-hero-title" data-i18n="mbtiTitle">멍BTI 성격 검사</h2>
+        <p class="content-hero-sub" data-i18n="mbtiSub">주인 눈에 비친 우리 강아지, 어떤 성격일까요?</p>
+      </div>
+
+      <!-- STEP 0: Mode Selection -->
+      <div id="mbti-step-mode" class="mbti-step active">
+        <div class="mbti-mode-card">
+          <div class="mbti-mode-header">
+            <span class="mbti-mode-emoji">🐾</span>
+            <h3 data-i18n="mbtiModeTitle">검사 모드를 선택하세요</h3>
+            <p data-i18n="mbtiModeSub">주인 입장에서 강아지의 행동과 성격을 떠올리며 답해주세요</p>
+          </div>
+
+          <!-- Breed Selection -->
+          <div class="mbti-breed-section">
+            <h4 data-i18n="mbtiBreedSelectTitle">🐕 우리 강아지 종은?</h4>
+            <div class="mbti-breed-search-box">
+              <span class="mbti-search-icon">🔍</span>
+              <input type="text" id="mbtiBreedInput" class="mbti-breed-input" placeholder="포메라니안, 골든 리트리버..." autocomplete="off">
+              <button class="mbti-breed-clear" id="mbtiBreedClear">✕</button>
+            </div>
+            <div id="mbtiBreedAutocomplete" class="mbti-autocomplete"></div>
+            <div id="mbtiSelectedBreed" class="mbti-selected-breed hidden">
+              <span id="mbtiSelectedBreedName"></span>
+              <button class="mbti-breed-deselect" id="mbtiBreedDeselect">✕</button>
+            </div>
+            <button class="mbti-unknown-btn" id="mbtiBreedUnknown" data-i18n="mbtiBreedUnknown">🤷 종을 모르겠어요</button>
+          </div>
+
+          <!-- Mode Buttons -->
+          <div class="mbti-mode-buttons">
+            <button class="mbti-mode-btn mbti-mode-speed" id="mbtiModeSpeed">
+              <span class="mbti-mode-btn-icon">⚡</span>
+              <span class="mbti-mode-btn-title" data-i18n="mbtiModeSpeedTitle">스피드 모드</span>
+              <span class="mbti-mode-btn-desc" data-i18n="mbtiModeSpeedDesc">10문항 · 약 2분</span>
+            </button>
+            <button class="mbti-mode-btn mbti-mode-deep" id="mbtiModeDeep">
+              <span class="mbti-mode-btn-icon">🔬</span>
+              <span class="mbti-mode-btn-title" data-i18n="mbtiModeDeepTitle">심층 분석</span>
+              <span class="mbti-mode-btn-desc" data-i18n="mbtiModeDeepDesc">50문항 · 약 8분</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 1: Questions -->
+      <div id="mbti-step-questions" class="mbti-step">
+        <div class="mbti-q-header">
+          <button class="mbti-back-btn" id="mbtiBackBtn">← 뒤로</button>
+          <div class="mbti-progress-wrap">
+            <div class="mbti-progress-bar">
+              <div class="mbti-progress-fill" id="mbtiProgressFill"></div>
+            </div>
+            <span class="mbti-progress-text" id="mbtiProgressText">1 / 10</span>
+          </div>
+        </div>
+        <div class="mbti-question-card" id="mbtiQuestionCard">
+          <div class="mbti-q-dimension" id="mbtiQDimension"></div>
+          <p class="mbti-q-text" id="mbtiQText"></p>
+          <div class="mbti-answers" id="mbtiAnswers"></div>
+        </div>
+      </div>
+
+      <!-- STEP 2: Result -->
+      <div id="mbti-step-result" class="mbti-step">
+        <div class="mbti-result-card" id="mbtiResultCard">
+          <!-- Filled by JS -->
+        </div>
+        <div class="mbti-result-actions">
+          <button class="mbti-retry-btn" id="mbtiRetryBtn" data-i18n="mbtiRetry">🔄 다시 검사하기</button>
+          <button class="mbti-share-btn" id="mbtiShareBtn" data-i18n="mbtiShare">📤 결과 공유하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="맨 위로">↑</button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>🐾 강아지 백과사전 — 세상의 모든 강아지를 사랑하는 사람들을 위해</p>
+      <p class="footer-sub">이미지 제공: <a href="https://dog.ceo" target="_blank" rel="noopener">Dog CEO API</a></p>
+    </div>
+  </footer>
+
+  <script src="dogs-data.js?v=7"></script>
+  <script src="medical-data.js?v=7"></script>
+  <script src="app.js?v=8"></script>
+</body>
+
+</html>
